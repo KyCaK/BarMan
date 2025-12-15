@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Принудительная белая тема для Telegram Mini App */
+:root {
+  --va-primary: #2481cc;
+  --va-background: #ffffff;
+  --va-on-background: #000000;
+  --va-surface: #ffffff;
+  --va-on-surface: #000000;
+  --va-secondary: #f4f4f5;
+  --va-on-secondary: #000000;
+  
+  /* Telegram theme variables для совместимости */
+  --tg-theme-bg-color: #ffffff;
+  --tg-theme-text-color: #000000;
+  --tg-theme-hint-color: #999999;
+  --tg-theme-link-color: #2481cc;
+  --tg-theme-button-color: #2481cc;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-secondary-bg-color: #f4f4f5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Принудительная белая тема для всех элементов */
+html, body, #app {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Переопределяем любые темные цвета от Telegram */
+* {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Force white theme for all possible Telegram theme classes */
+body[data-tg-theme="dark"], 
+body[data-theme="dark"],
+.dark-theme,
+[data-theme="dark"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+#app {
+  min-height: 100vh;
+  padding-bottom: 80px;
+  background-color: #ffffff !important;
+}
+
+/* Анимации переходов */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.slide-up { animation: slideUp 0.3s ease-out; }
+.fade-in { animation: fadeIn 0.2s ease-out; }
+
+/* Переходы между страницами */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+/* Кастомные классы для совместимости */
+.text-tg-text { color: var(--tg-theme-text-color) !important; }
+.text-tg-hint { color: var(--tg-theme-hint-color) !important; }
+.bg-tg-secondary-bg { background-color: var(--tg-theme-secondary-bg-color) !important; }
